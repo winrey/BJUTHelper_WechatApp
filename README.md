@@ -1,0 +1,2 @@
+# BJUTHelper_WechatApp
+北京工业大学野生助手微信小程序版
