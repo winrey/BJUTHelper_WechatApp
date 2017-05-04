@@ -1,0 +1,37 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view class="logo">
+    <image class="img" src="/resources/imgs/LOGO.jpg" background-size="cover" mode="aspectFit"></image>
+  </view>
+  <view class="title">
+    <text class="text">外网查分</text>
+  </view>
+  <view class="zan-form">
+    <view class="zan-cell zan-form__item">
+      <text class="zan-form__title">查询学号</text>
+      <input class="zan-form__input zan-cell__bd" placeholder="请输入您的学号" type="number" maxlength="20" bindchange="onUserChange" />
+    </view>
+    <view class="zan-cell zan-form__item">
+      <text class="zan-form__title">教务密码</text>
+      <input class="zan-form__input zan-cell__bd" password=true placeholder="请输入您教务密码(gdjwgl.bjut.edu.cn)" bindchange="onPwdChange" />
+    </view>
+    <view class="zan-cell zan-form__item">
+      <text class="zan-form__title">查询学年</text>
+      <view class="zan-form__input zan-cell__bd">
+        <picker mode="selector" range="{{ year }}" value="{{ yearIndex }}" bindchange="onYearChange">
+          {{ year[yearIndex] }}
+        </picker>
+      </view>
+    </view>
+    <view class="zan-cell zan-form__item zan-cell--last-child">
+      <text class="zan-form__title">查询学期</text>
+      <view class="zan-form__input zan-cell__bd">
+        <picker mode="selector" range="{{ term }}" value="{{ termIndex }}" bindchange="onTermChange">
+          {{ term[termIndex] }}
+        </picker>
+      </view>
+    </view>
+  </view>
+  <!--<button class="zan-btn zan-btn--primary">点击开始</button>-->
+</view>

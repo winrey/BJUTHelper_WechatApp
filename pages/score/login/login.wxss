@@ -1,0 +1,13 @@
+.logo .img{
+    height: 150px;
+    widows: 150px;
+}
+.logo{
+    margin-top:-40px;
+}
+.title{
+    margin: 15px;
+}
+.title .text{
+    font-size: 24px;
+}
