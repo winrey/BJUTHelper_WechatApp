@@ -7,9 +7,10 @@
     "pages/score/share/share"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#FAFAFA",
+    "navigationBarTitleText": "野生工大助手",
+    "navigationBarTextStyle":"black",
+    "backgroundTextStyle":"dark",
+    "backgroundColor": "#f9f9f9"
   }
 }

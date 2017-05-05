@@ -3,11 +3,42 @@
     widows: 150px;
 }
 .logo{
-    margin-top:-40px;
+    margin-top:10px;
 }
 .title{
-    margin: 15px;
+    margin: 0px;
 }
 .title .text{
     font-size: 24px;
+}
+.doc-title{
+    margin-top: 0px;
+}
+.doc-title .text{
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+.zan-btns{
+    margin: 15px auto;
+}
+.declear{
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 15px;
+    color: #888888;
+}
+.author{
+    margin: 10px auto 2px auto;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+}
+.br{
+    padding: 5px;
+}
+.bold{
+    font-weight: 800;
 }
