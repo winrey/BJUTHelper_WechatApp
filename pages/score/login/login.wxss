@@ -1,9 +1,13 @@
 .logo .img{
-    height: 150px;
+    height: 120px;
     widows: 150px;
+    width: 100%;
 }
 .logo{
+    margin: auto;
+    display: block;
     margin-top:10px;
+    width: 100%;
 }
 .title{
     margin: 0px;
@@ -41,4 +45,12 @@
 }
 .bold{
     font-weight: 800;
+}
+.switch-remember-me{
+    margin-right:10px;
+    margin-left:auto;
+}
+.to-right{
+    text-align: right;
+    padding: 5px;
 }

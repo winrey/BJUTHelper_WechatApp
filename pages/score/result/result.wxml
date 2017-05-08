@@ -1,2 +1,13 @@
 <!--pages/score/result/result.wxml-->
-<text>pages/score/result/result.wxml</text>
+<view class="container">
+    <view class="zan-panel-title">课程统计情况</view>
+    <view class="zan-panel">
+    <view class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">本学期已出分课程数</view>
+      <view class="zan-cell__ft"></view>
+    </view>
+    <view class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd"><text>大学总已出分课程数\n大学总未通过课程数</text></view>
+    </view>
+  </view>
+</view>
