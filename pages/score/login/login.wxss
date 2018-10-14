@@ -38,7 +38,7 @@
     display: block;
     text-align: center;
     font-size: 12px;
-    color: #888888;
+    color: #aaaaaa;
 }
 .br{
     padding: 5px;

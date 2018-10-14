@@ -1,13 +1,50 @@
 <!--pages/score/result/result.wxml-->
+<wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
-    <view class="zan-panel-title">课程统计情况</view>
-    <view class="zan-panel">
-    <view class="zan-cell zan-cell--access">
+  <view class="zan-panel-title">课程统计情况</view>
+  <view class="zan-panel">
+   <view class="zan-cell zan-cell--access">
       <view class="zan-cell__bd">本学期已出分课程数</view>
-      <view class="zan-cell__ft"></view>
+      <view class="zan-cell__ft">{{result.term_lesson_count}}</view>
+    </view>
+  </view>
+
+  <view class="zan-panel-title">总平均分</view>
+
+  <view class="zan-panel">
+    <view class="zan-cell zan-cell--access">
+      <view class="zan-cell__bd">大学期间总加权平均分</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_score_all)}}</view>
     </view>
     <view class="zan-cell zan-cell--access">
-      <view class="zan-cell__bd"><text>大学总已出分课程数\n大学总未通过课程数</text></view>
+      <view class="zan-cell__bd">大学期间总平均学分绩点（GPA）</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_all)}}</view>
+    </view>
+  </view>
+  <view class="zan-panel-title">学期平均分</view>
+  <view class="zan-panel">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">本学期加权平均分</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_score_term)}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">本学期平均学分绩点（GPA）</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_term)}}</view>
+    </view>
+  </view>
+  <view class="zan-cell">
+    <icon type="info" size="12"></icon>
+    <view class="zan-cell__bd">
+      <text style='font-size: 8px; color: grey; position: relative; top: -1px;'>　GPA 根据 北工大教务处文件，采用四分制计算。其他学校可能采用不同算法。</text>
+    </view>
+  </view>
+  <view class="zan-panel-title">课程明细</view>
+  <view class="zan-panel">
+    <view class="zan-cell" wx:for="{{result.grade_term}}" wx:for-item="course">
+      <view class="zan-cell__bd">{{course.name}}</view>
+      <view class="zan-cell__ft"><text>{{course.score}} | {{course.credit}}</text></view>
     </view>
   </view>
 </view>
+
+  <button class="zan-btn" bindtap="backToLogin">点击返回</button>

@@ -1,1 +1,4 @@
 /* pages/score/result/result.wxss */
+.zan-btn{
+    margin: 15px auto;
+}

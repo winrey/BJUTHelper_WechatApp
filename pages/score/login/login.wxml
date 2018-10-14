@@ -13,7 +13,7 @@
     <view class="zan-form">
       <view class="zan-cell zan-form__item">
         <text class="zan-form__title">查询学号</text>
-        <input class="zan-form__input zan-cell__bd" placeholder="请输入您的学号" type="number" maxlength="20" value="{{ user }}" />
+        <input class="zan-form__input zan-cell__bd" placeholder="请输入您的学号" type="number" maxlength="20" bindchange="onUserChange" value="{{ user }}" />
       </view>
       <view class="zan-cell zan-form__item">
         <text class="zan-form__title">教务密码</text>
@@ -52,13 +52,14 @@
     </view>
   </view>
   <view class="zan-btns">
-    <button class="zan-btn zan-btn--primary">点击开始</button>
+    <button class="zan-btn zan-btn--primary" bindtap="startRequireScore" disabled="{{disabled}}" loading="{{loading}}">点击开始</button>
   </view>
   <view class="declear"  bindtap="toggleDialog">
     <text>说明及更新</text>
   </view>
   <view class="author">
-    <text>By 王雨峰 陈仕玺 马文瑞</text>
+    <text>[前端组] 马文瑞 高正岳\n</text>
+    <text>[后端组] 王雨峰 陈仕玺 郭都豪 马文瑞 etc.</text>
   </view>
 </view>
 <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
