@@ -2,3 +2,13 @@
 .zan-btn{
     margin: 15px auto;
 }
+.btn-back{
+  color: white;
+  background-color: #10aeff;
+}
+.detailed-panel{
+  margin: 0;
+}
+.detailed-panel > view .zan-cell__bd{
+  text-align:left;
+}

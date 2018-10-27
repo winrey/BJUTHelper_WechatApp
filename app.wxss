@@ -28,3 +28,9 @@
   border-bottom: 1rpx solid #e5e5e5;
 }
 
+.divLine{
+ /* background: #E0E3DA; */
+ background: linear-gradient(to right, white, #E0E3DA, white);
+ width: 100%;
+ height: 5rpx;
+}

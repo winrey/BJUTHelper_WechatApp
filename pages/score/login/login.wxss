@@ -37,7 +37,7 @@
     margin: 10px auto 2px auto;
     display: block;
     text-align: center;
-    font-size: 12px;
+    font-size: 11px;
     color: #aaaaaa;
 }
 .br{
@@ -53,4 +53,7 @@
 .to-right{
     text-align: right;
     padding: 5px;
+}
+.divLine{
+ margin: 40rpx 0;
 }

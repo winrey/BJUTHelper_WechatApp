@@ -3,7 +3,7 @@
 <view class="container">
   <view class="zan-panel-title">课程统计情况</view>
   <view class="zan-panel">
-   <view class="zan-cell zan-cell--access">
+    <view class="zan-cell zan-cell--access" bindtap="toggleCourseDialog">
       <view class="zan-cell__bd">本学期已出分课程数</view>
       <view class="zan-cell__ft">{{result.term_lesson_count}}</view>
     </view>
@@ -12,11 +12,11 @@
   <view class="zan-panel-title">总平均分</view>
 
   <view class="zan-panel">
-    <view class="zan-cell zan-cell--access">
+    <view class="zan-cell zan-cell--access" bindtap="toggleScoreDialog">
       <view class="zan-cell__bd">大学期间总加权平均分</view>
       <view class="zan-cell__ft">{{filters.toFix(result.average_score_all)}}</view>
     </view>
-    <view class="zan-cell zan-cell--access">
+    <view class="zan-cell zan-cell--access" bindtap="toggleGpaDialog">
       <view class="zan-cell__bd">大学期间总平均学分绩点（GPA）</view>
       <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_all)}}</view>
     </view>
@@ -32,19 +32,134 @@
       <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_term)}}</view>
     </view>
   </view>
+
+  <view class="zan-panel-title" wx:if="{{result.total_value_minor > 0}}">辅修/二专业</view>
+
+  <view class="zan-panel" wx:if="{{result.total_value_minor > 0}}">
+    <view class="zan-cell zan-cell--access" bindtap="toggleScoreDialog">
+      <view class="zan-cell__bd">辅修/二专业课程的加权平均分</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_score_minor)}}</view>
+    </view>
+    <view class="zan-cell zan-cell--access" bindtap="toggleGpaDialog">
+      <view class="zan-cell__bd">辅修/二专业课程的平均学分绩点</view>
+      <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_minor)}}</view>
+    </view>
+  </view>
+
+
   <view class="zan-cell">
     <icon type="info" size="12"></icon>
     <view class="zan-cell__bd">
       <text style='font-size: 8px; color: grey; position: relative; top: -1px;'>　GPA 根据 北工大教务处文件，采用四分制计算。其他学校可能采用不同算法。</text>
     </view>
   </view>
-  <view class="zan-panel-title">课程明细</view>
+
+
+  <view class="zan-panel-title" style="position: relative">
+    课程明细
+    <view style="position: absolute; font-size:10px; right:16px; top:22px;">分数 | 学分</view>
+  </view>
   <view class="zan-panel">
-    <view class="zan-cell" wx:for="{{result.grade_term}}" wx:for-item="course">
+    <view class="zan-cell" 
+      wx:for="{{result.grade_term}}" 
+      wx:for-item="course"
+      wx:if="{{course.minor_maker == 0}}">
       <view class="zan-cell__bd">{{course.name}}</view>
-      <view class="zan-cell__ft"><text>{{course.score}} | {{course.credit}}</text></view>
+      <view class="zan-cell__ft">
+        <text>{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="zan-panel-title" style="position: relative" wx:if="{{result.total_value_minor > 0}}">
+    辅修/二专业明细
+    <view style="position: absolute; font-size:10px; right:16px; top:22px;">分数 | 学分 </view>
+  </view>
+
+  <view class="zan-panel" wx:if="{{result.total_value_minor > 0}}">
+    <view class="zan-cell" 
+      wx:for="{{result.grade_term}}" 
+      wx:for-item="course" 
+      wx:if="{{course.minor_maker == 1 || course.minor_maker == 2}}">
+      <view class="zan-cell__bd">{{course.name}}</view>
+      <view class="zan-cell__ft">
+        <text>{{course.score}} | {{filters.toFix(course.credit, 1)}}</text>
+      </view>
+    </view>
+  </view>
+
+
+  <button class="zan-btn btn-back" bindtap="backToLogin">点击返回</button>
+
+
+</view>
+
+
+<view class="zan-dialog {{ showCourseDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleCourseDialog" />
+  <view class="zan-dialog__container">
+    <view style="text-align: center;">
+      <view class="zan-panel detailed-panel">
+        <view class="zan-cell">
+          <view class="zan-cell__bd">本学期已出分课程数</view>
+          <view class="zan-cell__ft">{{result.term_lesson_count}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">大学总已出分课程数</view>
+          <view class="zan-cell__ft">{{result.total_lesson_count}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">大学总未通过课程数</view>
+          <view class="zan-cell__ft">{{result.all_number_of_lesson_unpassed}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
 
-  <button class="zan-btn" bindtap="backToLogin">点击返回</button>
+<view class="zan-dialog {{ showScoreDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleScoreDialog" />
+  <view class="zan-dialog__container">
+    <view style="text-align: center;">
+      <view class="zan-panel detailed-panel">
+        <view class="zan-cell">
+          <view class="zan-cell__bd">大学期间总加权平均分</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_score_all)}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">含未通过课程均分（计实际分数）</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_score_include_unpassed)}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">未通过课程补考后均分（计60分）</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_score_include_unpassed_passed)}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<view class="zan-dialog {{ showGpaDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleGpaDialog" />
+  <view class="zan-dialog__container">
+    <view style="text-align: center;">
+      <view class="zan-panel detailed-panel">
+        <view class="zan-cell">
+          <view class="zan-cell__bd">大学期间总平均学分绩点（GPA）</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_all)}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">含未通过课程绩点（未通过计0绩点）</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_include_unpassed)}}</view>
+        </view>
+        <view class="zan-cell">
+          <view class="zan-cell__bd">未通过课程补考后绩点（计60分2绩点）</view>
+          <view class="zan-cell__ft">{{filters.toFix(result.average_GPA_include_unpassed_passed)}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

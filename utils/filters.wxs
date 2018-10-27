@@ -1,10 +1,10 @@
 var filters = {
-  toFix: function (value) {
+  toFix: function (value, pos=2) {
     var num = parseFloat(value);
     if (isNaN(num)) {
       return false;
     }
-    return num.toFixed(2)//此处2为保留两位小数
+    return num.toFixed(pos)//此处pos默认为2，即保留两位小数
   }
 }
 module.exports = {

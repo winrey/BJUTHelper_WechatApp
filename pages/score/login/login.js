@@ -44,7 +44,8 @@ Page(Object.assign({}, Zan.Switch,{
     rememberMe: {
       checked: false
     },
-    showDialog: false,
+    showNoticeDialog: false,
+    showDeveloperDialog: false,
     disabled: false,
     loading: false,
   },
@@ -91,9 +92,15 @@ Page(Object.assign({}, Zan.Switch,{
     });
   },
 
-  toggleDialog() {
+  toggleNoticeDialog() {
     this.setData({
-      showDialog: !this.data.showDialog
+      showNoticeDialog: !this.data.showNoticeDialog
+    });
+  },
+
+  toggleDeveloperDialog() {
+    this.setData({
+      showDeveloperDialog: !this.data.showDeveloperDialog
     });
   },
 

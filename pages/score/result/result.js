@@ -2,7 +2,10 @@
 
 Page({
   data:{
-    result: null
+    result: null,
+    showCourseDialog: false,
+    showScoreDialog: false,
+    showGpaDialog: false,
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -30,5 +33,20 @@ Page({
     wx.redirectTo({
       url: '../login/login'
     });
-  }
+  },
+  toggleCourseDialog() {
+    this.setData({
+      showCourseDialog: !this.data.showCourseDialog
+    });
+  },
+  toggleScoreDialog() {
+    this.setData({
+      showScoreDialog: !this.data.showScoreDialog
+    });
+  },
+  toggleGpaDialog() {
+    this.setData({
+      showGpaDialog: !this.data.showGpaDialog
+    });
+  },
 })

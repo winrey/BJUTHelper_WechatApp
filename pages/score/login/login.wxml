@@ -4,7 +4,7 @@
 <!--index.wxml-->
 <view class="container">
   <view class="logo">
-    <image class="img" src="http://sfa.space.ac.cn/1/logo.png" background-size="cover" mode="aspectFit"></image>
+    <image class="img" src="../../../assets/box.png" background-size="cover" mode="aspectFit"></image>
   </view>
   <view class="doc-title">
     <text class="text">外网查分</text>
@@ -46,32 +46,62 @@
       <view class="zan-cell zan-form__item zan-cell--last-child">
         <text class="zan-form__title">记住我</text>
         <view class="switch-remember-me">
-  <template is="zan-switch" data="{{ ...rememberMe, componentId: 'rememberMe' }}" />
-        </view>        
+          <template is="zan-switch" data="{{ ...rememberMe, componentId: 'rememberMe' }}" />
+        </view>
       </view>
     </view>
   </view>
   <view class="zan-btns">
     <button class="zan-btn zan-btn--primary" bindtap="startRequireScore" disabled="{{disabled}}" loading="{{loading}}">点击开始</button>
   </view>
-  <view class="declear"  bindtap="toggleDialog">
+  <view class="declear" bindtap="toggleNoticeDialog">
     <text>说明及更新</text>
   </view>
-  <view class="author">
+  <view class="author" bindtap='toggleDeveloperDialog'>
     <text>[前端组] 马文瑞 高正岳\n</text>
-    <text>[后端组] 王雨峰 陈仕玺 郭都豪 马文瑞 etc.</text>
+    <text>[后端组] 王雨峰 陈仕玺 郭都豪 马文瑞 etc.\n</text>
+    <text style='font-style: italic; font-size:12px;'>点击查看完整团队成员</text>
   </view>
 </view>
-<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
-  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+<view class="zan-dialog {{ showNoticeDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleNoticeDialog" />
   <view class="zan-dialog__container">
-    <view style="padding: 100px 0; text-align: center;"><view class="zan-icon zan-icon-certificate" style="font-size:18px; color:green"></view><text> 账号和密码不会在云端保留，请放心。</text>
-    <view class="br"></view>
-    <view>说明：总加权平均分和总平均GPA的数据只对<text class="bold">没报二专业/辅修</text>的同学有效。如果存在分数不足60分的科目，总加权分数可能不准。</view>
-    <view class="br"></view>
-<view><text class="bold">注意</text>：数据仅供参考，请以教务系统为准。</view>
-<view class="br"></view>
-<view><text>如果本小程序出现问题，请联系：\n<text class="bold">马文瑞</text>(i@iaside.com)\n<text class="bold">王雨峰</text>(alanwang424@gmail.com)\n<text class="bold">陈仕玺</text>(i@devChen.com)</text></view>
+    <view style="padding: 100px 0; text-align: center;">
+      <view class="zan-icon zan-icon-certificate" style="font-size:18px; color:green"></view>
+      <text> 账号和密码不会在云端保留，请放心。</text>
+      <view class="br"></view>
+      <view>说明：总加权平均分和总平均GPA的数据只对
+        <text class="bold">没报二专业/辅修</text>的同学有效。如果存在分数不足60分的科目，总加权分数可能不准。</view>
+      <view class="br"></view>
+      <view>
+        <text class="bold">注意</text>：数据仅供参考，请以教务系统为准。</view>
+      <view class="br"></view>
+      <view>
+        <text>如果本小程序出现问题，请联系：\n\n
+        <text class="bold">马文瑞</text>(i@iaside.com)\n
+        <text class="bold">王雨峰</text>(alanwang424@gmail.com)\n
+        <text class="bold">陈仕玺</text>(i@devChen.com)</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="zan-dialog {{ showDeveloperDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDeveloperDialog" />
+  <view class="zan-dialog__container">
+    <view style="padding: 100px 0; text-align: center;">
+        <view style="margin: 20rpx">
+          <text class="bold">『查个锤子』\n</text>
+          <text class="bold">项目团队成员\n</text>
+        </view>
+        <text>陈仕玺 崔珍 王祎宁 施子墨\n</text>
+        <view class="divLine"></view>
+        <view style="margin: 20rpx">
+          <text class="bold">『该项目开发组』\n</text>
+        </view>
+        <text>
+          <text>[前端组] 马文瑞 高正岳\n</text>
+          <text>[后端组] 王雨峰 陈仕玺 郭都豪 马文瑞\n</text>
+        </text>
     </view>
   </view>
 </view>
