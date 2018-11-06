@@ -8,8 +8,10 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false
 	},
+	"cloudfunctionRoot": "cloud-functions/",
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
 	"appid": "wx07fc056677624f68",
@@ -33,12 +35,25 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "页面预览",
-					"pathName": "pages/score/result/result"
+					"pathName": "pages/score/result/result",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "查看他人分享",
+					"pathName": "pages/score/result/result",
+					"query": "shareId=W-BI2XhEiJmgTxjd",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群0",
+						"shareName": "HIxS4_TAMJhD2P4rL8cttc4DpvD_E5vB-onMh_bajqk@cr4dev",
+						"shareKey": "SPbquAokw3hqtt30_K79zFgvQWD9hgXNIBVps-r02RDfbpE1eaDc26BvCGQ70-gJcMo8D0ldGaNA9QP2A4kh8A~~"
+					}
 				}
 			]
 		}

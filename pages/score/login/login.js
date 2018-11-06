@@ -70,6 +70,20 @@ Page(Object.assign({}, Zan.Switch,{
         }
       }
     });
+    wx.cloud.init();
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'shareScore',
+      // 传给云函数的参数
+      data: {
+        a: 1,
+        b: 2,
+      },
+      success: function (res) {
+        console.log(res.result) // 3
+      },
+      fail: console.error
+    })
   },
   onUserChange: function (e) {
     this.setData({
@@ -90,6 +104,12 @@ Page(Object.assign({}, Zan.Switch,{
     this.setData({
       termIndex: e.detail.value
     });
+  },
+  onShareAppMessage: function(e){
+    return {
+      title: '野生工大助手 - 外网查分小程序',
+      path: '/pages/score/login/login'
+    }
   },
 
   toggleNoticeDialog() {
@@ -200,8 +220,18 @@ Page(Object.assign({}, Zan.Switch,{
       this.data.year[this.data.yearIndex],
       this.data.term[this.data.termIndex],
       function(data){
-        wx.redirectTo({
-          url: '../result/result?result=' + JSON.stringify(data),
+        that.setData({
+          loading: false,
+          disable: false
+        })
+        let requestInfo = {
+          sid: that.data.user,
+          currentYear: that.data.year[that.data.yearIndex],
+          currentTerm: that.data.term[that.data.termIndex],
+          pwd: that.data.pwd,
+        }
+        wx.navigateTo({
+          url: '../result/result?info=' + JSON.stringify(requestInfo) + '&result=' + JSON.stringify(data),
         });
       },
       function(err){

@@ -10,5 +10,6 @@
     "navigationBarTextStyle":"black",
     "backgroundTextStyle":"dark",
     "backgroundColor": "#f9f9f9"
-  }
+  },
+  "cloud": true
 }

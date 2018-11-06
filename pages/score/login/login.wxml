@@ -13,7 +13,7 @@
     <view class="zan-form">
       <view class="zan-cell zan-form__item">
         <text class="zan-form__title">查询学号</text>
-        <input class="zan-form__input zan-cell__bd" placeholder="请输入您的学号" type="number" maxlength="20" bindchange="onUserChange" value="{{ user }}" />
+        <input class="zan-form__input zan-cell__bd" placeholder="请输入您的学号" type="text" maxlength="20" bindchange="onUserChange" value="{{ user }}" />
       </view>
       <view class="zan-cell zan-form__item">
         <text class="zan-form__title">教务密码</text>

@@ -1,6 +1,65 @@
 <!--pages/score/result/result.wxml-->
 <wxs module="filters" src="../../../utils/filters.wxs"></wxs>
 <view class="container">
+  <view class='name-card-container'>
+    <view class='name-card-top'>
+      <view class='avatar-wrapper'>
+        <image class='avatar' src="{{userInfo ? userInfo.avatarUrl : '../../../assets/box.png'}}" background-size="cover" mode="aspectFit"></image>
+      </view>
+      <view class='name-card-title'>
+        <view class='name-card-nickname-wrapper'>
+          <view class='name-card-nickname' wx:if="{{userInfo}}">{{userInfo.nickName}}</view>
+          <button class='name-card-make-card' wx:if="{{!userInfo}}" open-type='getUserInfo' bindgetuserinfo="onGenUserCard">制作我的卡片</button>
+        </view>
+        <view class='name-card-comment-wrapper'>
+          <view class='name-card-comment' wx:if="{{!canModifyComment}}">{{comment}}</view>
+          <input class='name-card-comment-input' 
+          placeholder-class="name-card-comment-input-placeholder" 
+          bindchange="onCommentChange" 
+          value="{{ comment }}" 
+          maxlength="-1" 
+          placeholder="请在此输入展示语"  
+          wx:if="{{canModifyComment}}" 
+          />
+        </view>
+      </view>
+      <view class='name-card-score' wx:if="{{showedScore}}">{{showedScore}}</view>
+    </view>
+    <view class='name-card-bottom'>
+      <view class='name-card-badge'>学生信息</view>
+      <view class='name-card-wrapper'>
+        <view class='text-left'>
+          <view class='text-line first'>
+            <text class='text-title'>学号：</text><text class="text-content">{{result.sid}}</text>
+          </view>
+          <view class='text-line second'>
+            <text class='text-title'>姓名：</text><text class="text-content">{{result.name}}</text>
+          </view>
+        </view>
+        <view class='text-right'>
+          <view class='text-line third'>
+            <text class='text-title'>学院：</text><text class="text-content">{{result.institute}}</text>
+          </view>
+          <view class='text-line fourth'>
+            <text class='text-title'>专业：</text><text class="text-content">{{result.major}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="zan-panel-title" wx:if="{{isShared}}">学生信息</view>
+  <view class="zan-panel" wx:if="{{isShared}}">
+    <view class="zan-cell">
+      <view class="zan-cell__bd">学号</view>
+      <view class="zan-cell__ft">{{result.sid}}</view>
+    </view>
+    <view class="zan-cell">
+      <view class="zan-cell__bd">姓名</view>
+      <view class="zan-cell__ft">{{result.name}}</view>
+    </view>
+  </view>
+
   <view class="zan-panel-title">课程统计情况</view>
   <view class="zan-panel">
     <view class="zan-cell zan-cell--access" bindtap="toggleCourseDialog">
@@ -60,6 +119,9 @@
     <view style="position: absolute; font-size:10px; right:16px; top:22px;">分数 | 学分</view>
   </view>
   <view class="zan-panel">
+    <view class="no-score" wx:if="{{!result || result.number_of_lesson == 0}}">
+      <text>暂无课程成绩</text>
+    </view>
     <view class="zan-cell" 
       wx:for="{{result.grade_term}}" 
       wx:for-item="course"
@@ -89,10 +151,13 @@
     </view>
   </view>
 
+  <button class="zan-btn btn-share" open-type="share" wx:if="{{!isShared && userInfo && shareScoreId}}">我要晒成绩！</button>
 
+  <button class="zan-btn btn-share" bindtap="onCanNotShare" wx:if="{{!isShared && (!userInfo || !shareScoreId)}}">我要晒成绩！</button>
+  
   <button class="zan-btn btn-back" bindtap="backToLogin">点击返回</button>
 
-
+  <view class='bottom-margin-view'></view>
 </view>
 
 

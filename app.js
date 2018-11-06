@@ -5,6 +5,11 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    wx.cloud.init({
+      env: 'test-92d76c',
+      // env: 'release-070996' ,
+      traceUser: true
+    })
   },
   getUserInfo:function(cb){
     var that = this
