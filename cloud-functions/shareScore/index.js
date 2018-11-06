@@ -2,7 +2,9 @@
 const cloud = require('wx-server-sdk')
 
 cloud.init()
-const db = cloud.database()
+const db = cloud.database({
+  env: process.env.DATABASE_ENV_ID
+})
 const _ = db.command
 
 // 云函数入口函数
@@ -34,6 +36,7 @@ exports.main = async (event, context) => {
         sharedInfo: event.sharedInfo,
         result: event.result,
 
+        version: 1,
         createdTime: new Date(),
 
       }

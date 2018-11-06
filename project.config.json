@@ -45,7 +45,7 @@
 				},
 				{
 					"id": 1,
-					"name": "查看他人分享",
+					"name": "查看他人分享-测试环境",
 					"pathName": "pages/score/result/result",
 					"query": "shareId=W-BI2XhEiJmgTxjd",
 					"scene": "1044",
@@ -53,6 +53,18 @@
 						"groupName": "测试模拟群0",
 						"shareName": "HIxS4_TAMJhD2P4rL8cttc4DpvD_E5vB-onMh_bajqk@cr4dev",
 						"shareKey": "SPbquAokw3hqtt30_K79zFgvQWD9hgXNIBVps-r02RDfbpE1eaDc26BvCGQ70-gJcMo8D0ldGaNA9QP2A4kh8A~~"
+					}
+				},
+				{
+					"id": 2,
+					"name": "查看他人成绩-生产环境",
+					"pathName": "pages/score/result/result",
+					"query": "shareId=W-DlgrdokuiP5u_W",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群2",
+						"shareName": "HIxS4_TAMJhD2P4rL8cttanyNQKP0MR8lDseDCG0jRs@cr4dev",
+						"shareKey": "ztIinnYxtSeCfJVegXfXomgbaq2MxcOUOc3yJJ1d7RCg9dx0AK3JzhP0jK_cxS8TP86DRVtbsZVKf-6EXn_qvQ~~"
 					}
 				}
 			]

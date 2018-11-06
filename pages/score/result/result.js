@@ -60,7 +60,9 @@ Page({
       // 查看他人分享成绩
       let sharedId = options.shareId
       wx.nextTick(() => {
-        const db = wx.cloud.database()
+        const db = wx.cloud.database({
+          env: app.globalData.envId
+        })
         db.collection('shared_score_results').where({
           _id: sharedId // 填入当前用户 openid
         }).get().then(res => {
@@ -260,7 +262,8 @@ Page({
   },
 
   backToLogin(){
-    wx.redirectTo({
+    // 关闭所有页面并转到
+    wx.reLaunch({
       url: '../login/login'
     });
   },

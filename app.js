@@ -1,4 +1,8 @@
 //app.js
+
+// const ENV_ID = "test-92d76c"
+const ENV_ID = "release-070996"
+
 App({
   onLaunch: function () {
     //调用API从本地缓存中获取数据
@@ -6,8 +10,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     wx.cloud.init({
-      env: 'test-92d76c',
-      // env: 'release-070996' ,
+      env: ENV_ID ,
       traceUser: true
     })
   },
@@ -30,6 +33,7 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    envId: ENV_ID,
   }
 })
