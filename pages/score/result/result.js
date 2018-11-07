@@ -109,10 +109,10 @@ Page({
         })
       })
     }
-    wx.showShareMenu({
-      withShareTicket: true
-    });
-    // wx.hideShareMenu();
+    // wx.showShareMenu({
+    //   withShareTicket: true
+    // });
+    wx.hideShareMenu();
     
   },
   onReady:function(){
@@ -171,6 +171,10 @@ Page({
   },
 
   onShareAppMessage: function (res) {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 0
+    })
     if (this.data.userInfo && this.data.shareScoreId){
       return {
         title: this.data.comment || '我的成绩单',
@@ -200,7 +204,7 @@ Page({
       
       wx.showModal({
         title: '提示',
-        content: '如要使用分享功能，需要将本次查询结果上传到微信小程序服务器（但该操作依然不会在服务端保留密码）。上传后再次点击或者转发给朋友即可分享，并且卡片展示语将不可更改。您确定吗？',
+        content: '如要使用分享功能，需要将本次查询结果上传到微信小程序服务器（但该操作依然不会在服务端保留密码）。上传后点击右上角转发给朋友即可分享，并且卡片展示语将不可更改。您确定吗？',
         confirmText: "上传",
         success(res) {
           if (res.confirm) {
@@ -231,8 +235,11 @@ Page({
                 })
                 return
               }
+              wx.showShareMenu({
+                withShareTicket: true
+              })
               wx.showToast({
-                title: '上传成功，请再次点击即可分享发送给朋友',
+                title: '上传成功，请点击右上角转发给朋友',
                 icon: "none",
                 duration: 2000
               })
@@ -257,6 +264,17 @@ Page({
       })
 
       return
+    }
+    else{
+      wx.pageScrollTo({
+        scrollTop: 0,
+        duration: 300
+      })
+      wx.showToast({
+        title: '请点击 右上角 更多 中选择 转发',
+        icon: 'none',
+        duration: 2000
+      })
     }
 
   },

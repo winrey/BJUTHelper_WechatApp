@@ -70,8 +70,7 @@
       <view class="zan-icon zan-icon-certificate" style="font-size:18px; color:green"></view>
       <text> 教务账号密码不会在云端保留，请放心。</text>
       <view class="br"></view>
-      <view>说明：总加权平均分和总平均GPA的数据只对
-        <text class="bold">没报二专业/辅修</text>的同学有效。如果存在分数不足60分的科目，总加权分数可能不准。</view>
+      <view>说明：如果存在<text class="bold">分数不足60分</text>的科目，总加权分数可能不准。</view>
       <view class="br"></view>
       <view>
         <text class="bold">注意</text>：数据仅供参考，请以教务系统为准。</view>

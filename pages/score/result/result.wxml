@@ -41,7 +41,7 @@
             <text class='text-title'>学院：</text><text class="text-content">{{result.institute}}</text>
           </view>
           <view class='text-line fourth'>
-            <text class='text-title'>专业：</text><text class="text-content">{{result.major}}</text>
+            <text class='text-title'>专业：</text><text class="text-content">战略非常忽悠{{result.major}}</text>
           </view>
         </view>
       </view>
@@ -151,9 +151,9 @@
     </view>
   </view>
 
-  <button class="zan-btn btn-share" open-type="share" wx:if="{{!isShared && userInfo && shareScoreId}}">我要晒成绩！</button>
+  <!-- <button class="zan-btn btn-share" open-type="share" wx:if="{{!isShared && userInfo && shareScoreId}}">我要晒成绩！</button> -->
 
-  <button class="zan-btn btn-share" bindtap="onCanNotShare" wx:if="{{!isShared && (!userInfo || !shareScoreId)}}">我要晒成绩！</button>
+  <button class="zan-btn btn-share" bindtap="onCanNotShare" wx:if="{{!isShared}}">我要晒成绩！</button>
   
   <button class="zan-btn btn-back" bindtap="backToLogin">点击返回</button>
 
